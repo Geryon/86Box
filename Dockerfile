@@ -1,12 +1,11 @@
-FROM archlinux:latest
+FROM ubuntu:focal
 
-RUN echo $' \n\
-  [multilib] \n\
-  Include = /etc/pacman.d/mirrorlist' >> /etc/pacman.conf
+ENV TZ=America/New_York
+ENV DEBIAN_FRONTEND=noninteractive
 
-RUN pacman -Sy ; pacman -Ss '.*freetype.*'
+RUN apt-get update && apt-get install tzdata
 
-RUN pacman -Sy --noconfirm base-devel cmake extra-cmake-modules pkg-config ninja freetype2 sdl2 libpng lib32-openal rtmidi faudio qt5-base qt5-xcb-private-headers qt5-tools libevdev vulkan-devel git vim
+RUN apt-get update && apt-get -y dist-upgrade; apt install -y build-essential cmake extra-cmake-modules pkg-config ninja-build libfreetype-dev libsdl2-dev libpng-dev libopenal-dev librtmidi-dev libfaudio-dev qtbase5-dev qtbase5-private-dev qttools5-dev libevdev-dev git vim
 
 RUN useradd -d /86Box -u 1000 nick
 RUN git config --global user.name 'Geryon'
