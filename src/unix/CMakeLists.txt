@@ -15,6 +15,8 @@
 #          Copyright 2021      David Hrdlička.
 #
 
+cmake_policy(SET CMP0079 NEW)
+
 add_library(plat OBJECT unix.c)
 
 if (NOT CPPTHREADS)

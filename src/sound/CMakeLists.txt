@@ -13,6 +13,8 @@
 #          Copyright 2020-2021 David Hrdlička.
 #
 
+cmake_policy(SET CMP0079 NEW)
+
 add_library(snd OBJECT sound.c snd_opl.c snd_opl_nuked.c snd_opl_ymfm.cpp snd_resid.cc
     midi.c snd_speaker.c snd_pssj.c snd_lpt_dac.c snd_ac97_codec.c snd_ac97_via.c
     snd_lpt_dss.c snd_ps1.c snd_adlib.c snd_adlibgold.c snd_ad1848.c snd_audiopci.c
